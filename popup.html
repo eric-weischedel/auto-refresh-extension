@@ -5,8 +5,14 @@
   </head>
   <body>
     <div id="container">
-      <input id="autoRefreshEnabledToggle" type="checkbox"></input>
-      <p>Auto refresh enabled</p>
+      <div class="row">
+        <input id="autoRefreshEnabledToggle" name="autoRefreshEnabledToggle" type="checkbox" />
+        <label for="autoRefreshEnabledToggle">Auto refresh enabled</label>
+      </div>
+      <div class="row">
+        <label for="refreshIntervalInput">Refresh interval (seconds)</label>
+        <input id="refreshIntervalInput" name="refreshIntervalInput" type="number" />
+      </div>
     </div>
     <div id="test"></div>
     <script src="popup.js"></script>

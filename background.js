@@ -1,6 +1,5 @@
-const INTERVAL_MS = 1000;
-
 let intervalId = undefined;
+let intervalMs = 1000;
 
 chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
   if (message === 'enable') {
@@ -12,14 +11,16 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
         target: { tabId: tab.id },
         func: () => location.reload()
       }),
-      INTERVAL_MS
+      intervalMs
     );
   } else if (message === 'disable') {
     clearInterval(intervalId);
     intervalId = undefined;
   } else if (message === 'get-current-status') {
-    sendResponse(!!intervalId);
+    sendResponse({ enabled: !!intervalId, interval: intervalMs / 1000 });
     return true;
+  } else if (message.type === 'set-refresh-interval') {
+    intervalMs = message.payload.interval * 1000;
   }
 });
 

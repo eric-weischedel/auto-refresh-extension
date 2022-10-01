@@ -1,5 +1,15 @@
 #container {
+  width: max-content;
+}
+
+.row {
   display: flex;
   flex-direction: row;
-  width: max-content;
+  align-items: center;
+  padding: 3px;
+}
+
+#refreshIntervalInput {
+  margin-left: 6px;
+  width: 48px;
 }
